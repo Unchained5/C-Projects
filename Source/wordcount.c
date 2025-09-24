@@ -1,15 +1,12 @@
 #include <stdio.h>
 #define IN 1 /* inside a word */
 #define OUT 0 /* outside a word */
-/* count lines, words, and characters in input */
+/* count words in input */
 int main() {
-	int c, nl, nw, nc, state;
+	int c, nw, state;
 	state = OUT;
-	nl = nw = nc = 0;
+	nw = 0;
 	while ((c = getchar()) != EOF) {
-		++nc;
-		if (c == '\n')
-			++nl;
 		if (c == ' ' || c == '\n' || c == '\t')
 			state = OUT;
 		else if (state == OUT) {
@@ -17,5 +14,5 @@ int main() {
 			++nw;
 		}
 	}
-	printf("%d %d %d\n", nl, nw, nc);
+	printf("%d \n", nw);
 }
